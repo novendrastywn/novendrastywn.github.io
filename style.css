@@ -1,0 +1,108 @@
+/* ===== Theme tokens ===== */
+:root {
+  --bg: #fbfaf7;
+  --surface: #ffffff;
+  --text: #1d2125;
+  --muted: #5d6670;
+  --accent: #0b5cad;
+  --border: #e4e1da;
+  --tag-bg: #eaf1fa;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a;
+    --surface: #1c2024;
+    --text: #e6e8ea;
+    --muted: #9aa3ad;
+    --accent: #6cb0f5;
+    --border: #2c3238;
+    --tag-bg: #1f2d3d;
+  }
+}
+
+/* ===== Base ===== */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.65 "Inter", system-ui, sans-serif;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+h1, h2, h3 { font-family: "Source Serif 4", Georgia, serif; line-height: 1.25; }
+h2 { font-size: 1.45rem; margin: 2rem 0 1rem; padding-bottom: .4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.1rem; margin: .2rem 0 .5rem; }
+.muted { color: var(--muted); }
+
+/* ===== Navigation ===== */
+.nav {
+  position: sticky; top: 0; z-index: 10;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 880px; margin: 0 auto; padding: .8rem 16px;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+}
+.brand { font-weight: 700; color: var(--text); }
+.nav nav { display: flex; gap: 1.1rem; flex-wrap: wrap; }
+.nav nav a { color: var(--muted); font-weight: 500; font-size: .95rem; }
+.nav nav a:hover { color: var(--accent); text-decoration: none; }
+
+/* ===== Layout ===== */
+main { max-width: 880px; margin: 0 auto; padding: 0 16px 3rem; }
+
+/* ===== Hero ===== */
+.hero { display: flex; gap: 2rem; align-items: center; padding: 3rem 0 1rem; }
+.avatar {
+  position: relative; flex: 0 0 160px; height: 160px; border-radius: 50%;
+  overflow: hidden; background: var(--tag-bg); display: grid; place-items: center;
+}
+.avatar span { font: 600 2.6rem "Source Serif 4", serif; color: var(--accent); }
+.avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero h1 { font-size: 2rem; margin: 0 0 .5rem; }
+.role { margin: .2rem 0; }
+.links { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+.links a {
+  padding: .35rem .8rem; border: 1px solid var(--border); border-radius: 999px;
+  font-size: .9rem; font-weight: 500; background: var(--surface);
+}
+.links a:hover { border-color: var(--accent); text-decoration: none; }
+
+/* ===== Lists ===== */
+.timeline { list-style: none; padding: 0; margin: 0; }
+.timeline li { display: grid; grid-template-columns: 120px 1fr; gap: 1rem; padding: .5rem 0; }
+.when { color: var(--muted); font-size: .9rem; font-variant-numeric: tabular-nums; margin: 0; }
+.plain { padding-left: 1.2rem; }
+.plain li { margin: .3rem 0; }
+.pubs { padding-left: 1.4rem; }
+.pubs li { margin: .7rem 0; }
+.tag {
+  display: inline-block; font-size: .72rem; font-weight: 600; padding: .05rem .5rem;
+  border-radius: 4px; background: var(--tag-bg); color: var(--accent); vertical-align: middle;
+}
+
+/* ===== Cards ===== */
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 10px; padding: 1.1rem 1.3rem; margin: 1rem 0;
+}
+.card p { margin: .3rem 0; }
+
+/* ===== Footer ===== */
+footer {
+  border-top: 1px solid var(--border); text-align: center;
+  padding: 1.5rem 16px; color: var(--muted); font-size: .92rem;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 640px) {
+  .hero { flex-direction: column; text-align: center; padding-top: 2rem; }
+  .avatar { flex-basis: auto; width: 128px; height: 128px; }
+  .links { justify-content: center; }
+  .timeline li { grid-template-columns: 1fr; gap: 0; }
+}
